@@ -40,18 +40,15 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (data.success && data.posts && data.posts.length > 0) {
             data.posts.forEach(post => {
+                const postDate = new Date(post.post_date).toLocaleDateString('fr-FR');
                 const postElement = document.createElement('div');
                 postElement.className = 'bg-gray-50 p-4 rounded border';
-                
-                const date = new Date(post.timestamp * 1000).toLocaleDateString();
-                
                 postElement.innerHTML = `
                     <div class="flex justify-between items-start">
-                        <p class="text-sm text-gray-500">${date}</p>
+                        <p class="text-sm text-gray-500">${postDate}</p>
                     </div>
                     <p class="mt-2">${post.caption || 'Aucune description'}</p>
                 `;
-                
                 postsListContainer.appendChild(postElement);
             });
         } else {
