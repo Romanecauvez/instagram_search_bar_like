@@ -1,6 +1,6 @@
 <?php
 // Charger les variables d'environnement depuis le fichier .env
-$env = parse_ini_file('../.env');
+$env = parse_ini_file(__DIR__ . '/../.env');
 
 // Paramètres de connexion à la base de données
 $db_host = $env["DB_HOST"];

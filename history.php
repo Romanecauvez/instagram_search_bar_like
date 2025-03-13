@@ -21,12 +21,12 @@
             // Récupérer l'historique des recherches
             $query = "SELECT id, username, search_date FROM searches ORDER BY search_date DESC";
             $result = $pdo->query($query);
-            
-            if ($result->num_rows > 0) {
+
+            if ($result->rowCount() > 0) {
                 echo '<div class="bg-white rounded-lg shadow-md overflow-hidden">';
                 echo '<ul class="divide-y divide-gray-200">';
                 
-                while ($row = $result->fetch_assoc()) {
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                     $date = date('d/m/Y H:i', strtotime($row['search_date']));
                     echo '<li class="p-4 hover:bg-gray-50">';
                     echo '<a href="history.php?search_id=' . $row['id'] . '" class="block">';
